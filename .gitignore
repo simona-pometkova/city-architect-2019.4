@@ -1,0 +1,76 @@
+
+### .gitignore for Unity
+
+```gitignore
+# This .gitignore file should be placed at the root of your Unity project directory
+
+# =============== #
+# Unity generated #
+# =============== #
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# ============= #
+# OS generated #
+# ============= #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =============== #
+# IDE generated #
+# =============== #
+/[Ee]xported[Oo]bj/
+/.vs/
+/.vscode/
+/[Ii]nternal [Cc]ompiler [Ee]rror*
+/*.csproj
+/*.unityproj
+/*.sln
+/*.suo
+/*.tmp
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+/*.svd
+/*.pdb
+/*.opendb
+/*.VC.db
+
+# ============= #
+# Builds #
+# ============= #
+/*.apk
+/*.aab
+/*.unitypackage
+
+# ====== #
+# Misc #
+# ====== #
+/*.pidb.meta
+/*.pdb.meta
+/*.mdb.meta
+/sysinfo.txt
+/*.apk.meta
+/*.aab.meta
+/*.unitypackage.meta
+
+# ======= #
+# Testing #
+# ======= #
+/[Tt]est[Rr]esults/
+/[Bb]uild[Rr]eport.log
+*[Bb]uild[Rr]eport.asset
+
+# Crashlytics generated file #
+crashlytics-build.properties
+
