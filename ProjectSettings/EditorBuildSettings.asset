@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScreen.unity
     guid: d5a7da4b2fe494f688e0a508c2b163c0
   - enabled: 1
-    path: Assets/Scenes/CityView.unity
+    path: Assets/Scenes/CityScene.unity
     guid: ddaa09e3fe7249f4e8bf35551c7a1a40
   m_configObjects: {}
