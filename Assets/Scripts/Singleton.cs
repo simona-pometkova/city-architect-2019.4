@@ -5,19 +5,34 @@ namespace Assets.Scripts
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        public static T Instance { get; private set; }
+        private static T _instance;
 
-        public void Awake()
+        public static T Instance
         {
-            if (Instance == null)
+            get
             {
-                Instance = this as T;
-                DontDestroyOnLoad(this);
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<T>();
+
+                    if (_instance == null)
+                    {
+                        GameObject go = new GameObject("Manager");
+                        _instance = go.AddComponent<T>();
+                    }
+                }
+
+                return _instance;
             }
+        }
+
+        private void Awake()
+        {
+            if (_instance == null)
+                _instance = this as T;
             else
-            {
-                Destroy(gameObject);
-            }
+                if (_instance != this)
+                    Destroy(gameObject);
         }
     }
 }

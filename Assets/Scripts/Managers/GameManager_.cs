@@ -14,6 +14,13 @@ namespace Assets.Scripts
          * Code may and probably will be optimised, refactored, some scripts 
          * deleted and etc as I notice some things may be unnecessary or made better.
          */
+        private int _counter = 1;
+
+        public void Update()
+        {
+            _counter++;
+            Debug.Log(_counter);
+        }
 
         public void StartGame()
         {
