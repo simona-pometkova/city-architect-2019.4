@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class GameManager_ : MonoBehaviour
+    public class GameManager_ : Singleton<GameManager_>
     {
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private AudioManager _audioManager;

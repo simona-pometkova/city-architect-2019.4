@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : Singleton<LevelManager>
     {
         public string MainMenuScene => _mainMenuScene;
         public string CityScene => _cityScene;
