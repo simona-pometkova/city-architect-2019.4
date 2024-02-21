@@ -25,19 +25,23 @@ public class block_controller : MonoBehaviour
         //Basic movement controls - will have to be changed depending on what input system package we use
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * moveSpeed);
+            transform.position += (Vector3.left * moveSpeed);
         }
 
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * moveSpeed);
+            transform.position += (Vector3.right * moveSpeed);
         }
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Rotate the block by 90 degrees around the Y-axis
+            transform.Rotate(0f, 0f, 90f);
+        }
 
         if (Time.time - lastFallTime >= fallInterval)
         {
             //multiply vertical movement by 0.5 as each block is half unity unit
-            transform.Translate(Vector3.down * 0.5f);
+            transform.position += Vector3.down * 0.5f;
             //update lastFallTime
             lastFallTime = Time.time;
         }
