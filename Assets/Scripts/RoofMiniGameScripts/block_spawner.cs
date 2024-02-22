@@ -23,7 +23,46 @@ public class block_spawner : MonoBehaviour
         int shapeIndex = Random.Range(0, shapePrefabs.Length);
         GameObject shape = shapePrefabs[shapeIndex];
 
-        Instantiate(shape, spawnPosition, Quaternion.identity);
+
+        /* The offset for spawning each shape is hard coded.
+        Not an ideal solution but works(for now) as long as the shapePrefabs array is
+        populated in a particular order(in the unity editor).
+
+        ////When the script is attached to an object, set size to 4, element 0 = 2x2 cube,
+        element 1 = straight line, element 2 = right L shape, element 3 = left L shape.
+
+        */
+
+        if(shapeIndex == 0)
+        {
+            //cube
+            Debug.Log("shape 0");
+            spawnPosition[1] = spawnPosition[1] - 0.25f;
+            spawnPosition[0] = spawnPosition[0] - 0.0f;
+            Instantiate(shape, spawnPosition, Quaternion.identity);
+        }
+        else if(shapeIndex == 1)
+        {
+            //line
+            Debug.Log("shape 1");
+            spawnPosition[1] = spawnPosition[1] - 0.25f;
+            spawnPosition[0] = spawnPosition[0] - 0.25f;
+            Instantiate(shape, spawnPosition, Quaternion.identity);
+        }
+        else if(shapeIndex == 2)
+        {
+            //Right L
+            Debug.Log("shape 2");
+            Instantiate(shape, spawnPosition, Quaternion.identity);
+        }
+        else if(shapeIndex == 3)
+        {
+            //Left L
+            Debug.Log("shape 3");
+            Instantiate(shape, spawnPosition, Quaternion.identity);
+        }
+        
+
     }
 
 }
