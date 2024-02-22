@@ -1,49 +1,90 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class block_controller : MonoBehaviour
 {
-    //variables to adjust movement speed and fall interval of blocks
-
-    //each block is 0.5f units so move 1 block
-    public float moveSpeed = 0.5f; 
-    //set time for fall interval(in seconds)
-    public float fallInterval = 1.0f; 
-    //declare last interval
+    public float moveSpeed = 0.5f;
+    public float fallInterval = 1.0f;
     private float lastFallTime;
+    public float minX = -3.0f;
+    public float maxX = 4.0f;
+    public float minY = -1.0f;
+    public float maxY = 3.75f;
 
     void Start()
     {
-        //initialise lastFallTime
         lastFallTime = Time.time;
     }
 
-
     void Update()
     {
-        //Basic movement controls - will have to be changed depending on what input system package we use
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            transform.position += (Vector3.left * moveSpeed);
+            MoveLeft();
         }
-
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            transform.position += (Vector3.right * moveSpeed);
+            MoveRight();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Rotate the block by 90 degrees around the Y-axis
-            transform.Rotate(0f, 0f, 90f);
+            RotateBlock();
         }
 
         if (Time.time - lastFallTime >= fallInterval)
         {
-            //multiply vertical movement by 0.5 as each block is half unity unit
-            transform.position += Vector3.down * 0.5f;
-            //update lastFallTime
+            MoveDown();
+        }
+    }
+
+    void MoveLeft()
+    {
+        transform.position += Vector3.left * moveSpeed;
+        ClampPosition();
+    }
+
+    void MoveRight()
+    {
+        transform.position += Vector3.right * moveSpeed;
+        ClampPosition();
+    }
+
+    void MoveDown()
+    {
+        transform.position += Vector3.down * moveSpeed;
+        lastFallTime = Time.time;
+        ClampPosition();
+    }
+
+    void RotateBlock()
+    {
+        transform.Rotate(0f, 0f, 90f);
+        ClampPosition();
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        // Check if the block is close to the bottom collider's position
+        if (collision.gameObject.CompareTag("yCollider"))
+        {
+            // Stop the block's downward movement
             lastFallTime = Time.time;
         }
+
+        // Check if the block is close to a side collider's position
+        if (collision.gameObject.CompareTag("xCollider"))
+        {
+            ClampPosition();
+        }
+    }
+
+    void ClampPosition()
+    {
+        // Clamp the block's position to stay within the bounds of the stage
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
+        transform.position = clampedPosition;
+        Debug.Log("Original Position: " + transform.position);
+        Debug.Log("Clamped Position: " + clampedPosition);
     }
 }
