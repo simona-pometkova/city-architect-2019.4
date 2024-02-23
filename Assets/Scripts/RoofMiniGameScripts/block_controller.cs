@@ -10,39 +10,49 @@ public class block_controller : MonoBehaviour
     public float minY = -1.0f;
     public float maxY = 3.75f;
 
-    //bool to stop blocks when they reach the bottom
+    private Rigidbody2D rb;
+
+    //global bools to stop movement...i know i know...globals flags are bad..
     private bool canMove = true;
+    private bool canMoveLeft = true;
+    private bool canMoveRight = true;
 
     void Start()
     {
         lastFallTime = Time.time;
+        rb = GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
         {
-            //check if can move
+
+            //check if block movement is allowed
             if (!canMove)
                 return;
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            //move left if the left arrow key is pressed and movement to the left is allowed
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && canMoveLeft)
             {
                 MoveLeft();
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            //move right if the right arrow key is pressed and movement to the right is allowed
+            else if (Input.GetKeyDown(KeyCode.RightArrow) && canMoveRight)
             {
                 MoveRight();
             }
+            //rotate the block if the space key is pressed
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 RotateBlock();
             }
 
+            //move the block down at regular intervals
             if (Time.time - lastFallTime >= fallInterval)
             {
                 MoveDown();
             }
         }
-
     //basic movement
     void MoveLeft()
     {
@@ -89,17 +99,36 @@ public class block_controller : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         //check for collisions
-        if (collision.gameObject.CompareTag("xCollider"))
-        {
-             Debug.Log("Collision on X Axis");
-
-        }
+        if (collision.gameObject.CompareTag("leftCollider"))
+            {
+                Debug.Log("Collision on left");
+                canMoveLeft = false;
+            }
+        if (collision.gameObject.CompareTag("rightCollider"))
+            {
+                Debug.Log("Collision on right");
+                canMoveRight = false;
+            }
         if (collision.gameObject.CompareTag("yCollider"))
         {
             //if collides with bottom, trigger canMove to false
              Debug.Log("Collision on Y Axis");
              canMove = false;
 
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        //check for collisions
+        if (collision.gameObject.CompareTag("leftCollider"))
+        {
+            Debug.Log("Collision exit on left");
+            canMoveLeft = true;
+        }
+        if (collision.gameObject.CompareTag("rightCollider"))
+        {
+            Debug.Log("Collision exit on right");
+            canMoveRight = true;
         }
     }
 

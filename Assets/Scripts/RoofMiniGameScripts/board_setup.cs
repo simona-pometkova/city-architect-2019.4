@@ -62,8 +62,8 @@ void AddBoxColliders()
     bottomCollider.transform.parent = transform;
 
     //set collider tags
-    leftCollider.tag = "xCollider";
-    rightCollider.tag = "xCollider";
+    leftCollider.tag = "leftCollider";
+    rightCollider.tag = "rightCollider";
     bottomCollider.tag = "yCollider";
 
     //calculate size for collider size using board size

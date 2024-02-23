@@ -6,6 +6,8 @@ TagManager:
   tags:
   - yCollider
   - xCollider
+  - leftCollider
+  - rightCollider
   layers:
   - Default
   - TransparentFX
