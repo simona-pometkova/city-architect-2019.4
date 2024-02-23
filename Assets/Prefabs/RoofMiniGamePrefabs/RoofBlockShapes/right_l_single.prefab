@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7326667787381736866}
   - component: {fileID: 1904537761693418585}
   - component: {fileID: 1112479230827796324}
+  - component: {fileID: 4088536245296124850}
   m_Layer: 0
   m_Name: right_l_single
   m_TagString: Untagged
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: -0.25, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,7 +142,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0.25, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,3 +177,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!66 &4088536245296124850
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934125097991623075}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 7326667787381736866}
+    m_ColliderPaths:
+    - - X: -293
+        Y: -7500000
+      - X: -293
+        Y: 7500000
+      - X: -5000000
+        Y: 7499707
+      - X: -4999707
+        Y: -7500000
+  - m_Collider: {fileID: 1904537761693418585}
+    m_ColliderPaths:
+    - - X: 4999707
+        Y: -7500000
+      - X: 4999707
+        Y: -2500000
+      - X: 0
+        Y: -2500293
+      - X: 293
+        Y: -7500000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -0.4999707, y: -0.74997073}
+      - {x: 0.4999707, y: -0.74997073}
+      - {x: 0.4999414, y: -0.25}
+      - {x: -0.000029300001, y: -0.2499999}
+      - {x: -0.000058600002, y: 0.75}
+      - {x: -0.5, y: 0.7499414}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
