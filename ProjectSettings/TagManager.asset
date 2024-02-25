@@ -8,6 +8,8 @@ TagManager:
   - xCollider
   - leftCollider
   - rightCollider
+  - gameBlock
+  - oldBlock
   layers:
   - Default
   - TransparentFX
