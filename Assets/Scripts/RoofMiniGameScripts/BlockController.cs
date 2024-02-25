@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
-
+    //set timer variables for blocks falling. 
     private float lastFallTime;
     public float fallTime = 0.8f;
+    //Set boundry for grid setup - if you change the grid size in the editer these must be changed too
     public static int boundHeight = 15;
     public static int boundWidth = 10;
+    //add a rotation point for the blocks so they line up with the grid
     public Vector3 rotationPoint;
+    //declare grid to store positions of placed blocks
     private static Transform[,] grid = new Transform[boundWidth, boundHeight];
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -20,14 +22,20 @@ public class BlockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //basic movement controls - may need to be changed later down the line
+
+        //move left
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            //move left when pressed
             transform.position += new Vector3(-1,0,0);
+            //if move is not allowed undo the transform
             if(ValidateMove() == false)
             {
                 transform.position -= new Vector3(-1,0,0);
             }
         }
+        //same as above just for the right arrow
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.position += new Vector3(1,0,0);
@@ -36,20 +44,27 @@ public class BlockController : MonoBehaviour
                 transform.position -= new Vector3(1,0,0);
             }
         }
+        //If the down key is pressed - divide falltime by 10 while the key is held so the block drops faster
         if(Time.time - lastFallTime > (Input.GetKey(KeyCode.DownArrow) ? fallTime / 10 : fallTime))
         {
             transform.position += new Vector3(0,-1,0);
             if(ValidateMove() == false)
             {
                 transform.position += new Vector3(0,1,0);
+                //update the grid with newly placed block
                 UpdateGrid();
+                //disable block this is attached to
                 this.enabled = false;
+                //spawn new block
                 FindObjectOfType<BlockSpawner>().SpawnBlock();
             }
+            //update time
             lastFallTime = Time.time;
         }
+        //block rotation
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            //convert local rotation to global
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0,0,1), 90);
             if(ValidateMove() == false)
             {
@@ -59,11 +74,14 @@ public class BlockController : MonoBehaviour
     }
     bool ValidateMove()
     {
+        //validate movement based on the stage boundary
+        //this loop goes over each transform in the gameobject - essentially the smaller tiles which the blocks are made up of
         foreach(Transform children in transform)
         {
+            //position rounded to int only - each block is made of smaller tiles which are 1 unity block
             int roundX = Mathf.RoundToInt(children.transform.position.x);
             int roundY = Mathf.RoundToInt(children.transform.position.y);
-
+            //check if outside bounds
             if(roundX < 0 || roundX >= boundWidth || roundY < 0 || roundY >= boundHeight)
             {
                 return false;
@@ -77,10 +95,12 @@ public class BlockController : MonoBehaviour
     }
     void UpdateGrid()
     {
+        //for each tile in block
         foreach(Transform children in transform)
         {
             int roundX = Mathf.RoundToInt(children.transform.position.x);
             int roundY = Mathf.RoundToInt(children.transform.position.y);
+            //add to grid
             grid[roundX, roundY] = children;
         }
     }
