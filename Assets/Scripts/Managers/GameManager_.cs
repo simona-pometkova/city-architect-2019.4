@@ -10,8 +10,11 @@ namespace Assets.Scripts
         [SerializeField] private PuzzleManager _puzzleManager;
         [SerializeField] private DialogueManager _dialogueManager;
 
-        /* Everything is subject to change in the process of development. 
-         * Code may and probably will be optimised, refactored, some scripts 
+        [SerializeField] private AudioClip clickSound;
+
+
+        /* Everything is subject to change in the process of development.
+         * Code may and probably will be optimised, refactored, some scripts
          * deleted and etc as I notice some things may be unnecessary or made better.
          */
         private int _counter = 1;
@@ -24,13 +27,24 @@ namespace Assets.Scripts
 
         public void StartGame()
         {
+            StartCoroutine(StartGameCoroutine());
+        }
+
+        private IEnumerator StartGameCoroutine()
+        {
+            // Play click sound
+            AudioManager.Instance.PlaySound(clickSound); // Use the instance of AudioManager to play the click sound
+
+            // Wait for the sound to finish, adjust the wait time if needed
+            yield return new WaitForSeconds(clickSound.length); // Wait for the length of the click sound
+
             // Call the LevelManager and load the CityScene
             _levelManager.LoadScene(_levelManager.CityScene);
         }
 
         public void ProgressGame()
         {
-            // Call the LevelManager to load the corresponding Scene, 
+            // Call the LevelManager to load the corresponding Scene,
             // also call the PuzzleManager to start the puzzle.
             _levelManager.ProgressNext();
         }
@@ -38,7 +52,7 @@ namespace Assets.Scripts
         public void EndGame()
         {
             // Call the PuzzleManager to get the final score and implement logic
-            // depending on what it is. 
+            // depending on what it is.
         }
 
         // What else?
