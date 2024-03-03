@@ -16,12 +16,6 @@ namespace Assets.Scripts
          */
         private int _counter = 1;
 
-        public void Update()
-        {
-            _counter++;
-            Debug.Log(_counter);
-        }
-
         public void StartGame()
         {
             // Call the LevelManager and load the CityScene

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,9 @@ namespace Assets.Scripts
         public string MainMenuScene => _mainMenuScene;
         public string CityScene => _cityScene;
 
-        [SerializeField] private string _mainMenuScene;
-        [SerializeField] private string _cityScene;
-        // Create and reference the other scenes.
-        // ! - Download & use NaughtyAttributes to reference Scenes directly, instead of writing their names.
+        [SerializeField, Scene] private string _mainMenuScene;
+        [SerializeField, Scene] private string _cityScene;
+        // Reference the other scenes.
 
         private Dictionary<string, int> _loadOrder = new Dictionary<string, int>(); // Order of game scenes. Is it mutable?
 
