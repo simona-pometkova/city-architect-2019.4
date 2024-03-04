@@ -10,6 +10,9 @@ TagManager:
   - rightCollider
   - gameBlock
   - oldBlock
+  - Cloud
+  - ScoreText
+  - GameOverPanel
   layers:
   - Default
   - TransparentFX
