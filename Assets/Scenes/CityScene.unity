@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.63398, y: 94.404}
-  m_SizeDelta: {x: 200, y: 47.200012}
+  m_AnchoredPosition: {x: 30, y: 102}
+  m_SizeDelta: {x: 225.31424, y: 50.99716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &131100439
 MonoBehaviour:
@@ -177,7 +177,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hi there, \nI'm Max the Mayor!\nWelcome to Puzzleton!"
+  m_text: "Hi there, Architect! \nI'm Max, the Mayor of Puzzleton. \nWelcome to our
+    vibrant city."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -205,8 +206,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -243,13 +244,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -150.6717, y: -68.17188, z: -93.76544, w: -110.35693}
+  m_margin: {x: -143.07747, y: -68.17188, z: -114.016846, w: -110.35693}
   m_textInfo:
     textComponent: {fileID: 131100439}
-    characterCount: 51
+    characterCount: 84
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 9
+    spaceCount: 15
+    wordCount: 14
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -560,6 +561,7 @@ GameObject:
   - component: {fileID: 1108597933}
   - component: {fileID: 1108597935}
   - component: {fileID: 1108597934}
+  - component: {fileID: 1108597936}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -624,6 +626,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108597932}
   m_CullTransparentMesh: 1
+--- !u!114 &1108597936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108597932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introDialogueText: {fileID: 131100439}
+  endDialogueText: {fileID: 0}
+  introDialogueTexts:
+  - Hi there, Architect! I'm Max, the Mayor of Puzzleton. Welcome to our vibrant
+    city.
+  - Our city needs you help, Architect. We need to build a new City Hall. We've got
+    three unique challenges for you, and time is of the essence.
+  - Our city's 100th anniversary is just around the corner, and we need the project
+    done by then. It's a tall order, but I believe you're the perfect person for
+    the job.
+  - So, what do you say? Will you accept this challenge and help us make history?
+  endDialogueTexts: []
 --- !u!1 &1311816405
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +723,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6180476708700165679, guid: 07122cccd6993ed4084848fed4df2752,
+        type: 3}
+      propertyPath: introDialogueText
+      value: 
+      objectReference: {fileID: 131100439}
     - target: {fileID: 6180476709669834988, guid: 07122cccd6993ed4084848fed4df2752,
         type: 3}
       propertyPath: m_Name
@@ -1035,6 +1066,7 @@ GameObject:
   - component: {fileID: 1800307913}
   - component: {fileID: 1800307912}
   - component: {fileID: 1800307911}
+  - component: {fileID: 1800307915}
   m_Layer: 5
   m_Name: DialogueButton
   m_TagString: Untagged
@@ -1144,8 +1176,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: StartGame
+      - m_Target: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1155,12 +1187,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: PlayButtonClickSound
+      - m_Target: {fileID: 11500000, guid: 1e409cdec0de05b4a95487342293294d, type: 3}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1203,6 +1235,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800307909}
   m_CullTransparentMesh: 1
+--- !u!114 &1800307915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800307909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introDialogueText: {fileID: 131100439}
+  endDialogueText: {fileID: 0}
+  introDialogueTexts:
+  - Hi there, Architect! I'm Max, the Mayor of Puzzleton. Welcome to our vibrant
+    city.
+  - Our city needs you help, Architect. We need to build a new City Hall. We've got
+    three unique challenges for you, and time is of the essence.
+  - Our city's 100th anniversary is just around the corner, and we need the project
+    done by then. It's a tall order, but I believe you're the perfect person for
+    the job.
+  - So, what do you say? Will you accept this challenge and help us make history?
+  endDialogueTexts: []
 --- !u!1 &1834222998
 GameObject:
   m_ObjectHideFlags: 0
