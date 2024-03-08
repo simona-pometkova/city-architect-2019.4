@@ -6,14 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    
+    public Button[] gameOverButtons;
     public GameObject gameOverPanel;
-    public Text textObject;
+    public Text scoreText;
+    public Text gameOverText;
     public BlockController blockController;
+    public RoofDialogueManager dialogueManager;
     // Start is called before the first frame update
     void Start()
     {
         gameOverPanel.SetActive(false);
+        foreach(Button button in gameOverButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
         
     }
 
@@ -22,10 +28,49 @@ public class UIManager : MonoBehaviour
     {
         DisplayScore();
         DisplayGameOverPanel();
+        
     }
 
     //function to display score - counts the transform objects stored in grid
     void DisplayScore()
+    {
+        int score = GetScore();
+        //reference canvas object and return text child, update using count
+        GameObject scoreObject = GameObject.Find("Canvas");
+
+        if(scoreObject != null)
+        {
+            scoreText = scoreObject.GetComponentInChildren<Text>();
+
+            if (scoreText != null)
+                {
+                    scoreText.text = "Score: " + score.ToString();
+                }
+        }
+        
+    }
+    public void DisplayGameOverPanel()
+    {
+        bool isGameOver = BlockController.gameOver;
+        if(isGameOver == true)
+        {
+            //Debug.Log("Gameover call from UI");
+            gameOverPanel.SetActive(true);
+            DisplayEndGameMessage();
+        }
+
+    }
+    public void RestartGame()
+    {
+        Debug.Log("button clicked");
+        //reset static variables
+        BlockController.ResetGrid();
+        BlockController.gameOver = false;
+        //restart scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+    public int GetScore()
     {
         Transform[,] grid = BlockController.GetGrid();
         //loop to count transform objects stored in grid
@@ -40,39 +85,34 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        //reference canvas object and return text child, update using count
-        GameObject scoreObject = GameObject.Find("Canvas");
-
-        if(scoreObject != null)
-        {
-            textObject = scoreObject.GetComponentInChildren<Text>();
-
-            if (textObject != null)
-                {
-                    textObject.text = "Score: " + count.ToString();
-                }
-        }
+        return count;
+    }
+    public void DisplayEndGameMessage()
+    {
+        int score = GetScore();
+        gameOverText.text = dialogueManager.GetGameOverMessage(score);
+        DisplayButtons(score);
         
     }
-    public void DisplayGameOverPanel()
+
+    public void DisplayButtons(int score)
     {
-        bool isGameOver = BlockController.gameOver;
-        if(isGameOver == true)
+        //I've probably gone ass ways about this, using essentially the same conditions as in roof dialogue manager
+        //might be a better idea just to do it once in DisplayEndGameManager?!
+        
+        if (score > 119)
         {
-            //Debug.Log("Gameover call from UI");
-            gameOverPanel.SetActive(true);
+            foreach(Button button in gameOverButtons)
+            {
+                button.gameObject.SetActive(true);
+            }
         }
-
-    }
-    public void RestartGame()
-    {
-        Debug.Log("button clicked");
-        //reset static variables
-        BlockController.ResetGrid();
-        BlockController.gameOver = false;
-        //restart scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        else
+        {
+            gameOverButtons[0].gameObject.SetActive(true);
+            gameOverButtons[1].gameObject.SetActive(true);
+        }
+        
     }
 
 }
