@@ -6,14 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    
+    public Button[] gameOverButtons;
     public GameObject gameOverPanel;
-    public Text textObject;
+    public Text scoreText;
+    public Text gameOverText;
     public BlockController blockController;
+    public RoofDialogueManager dialogueManager;
+
+    private bool gameOverSoundTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
         gameOverPanel.SetActive(false);
+        foreach(Button button in gameOverButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+        
         
     }
 
@@ -22,10 +31,54 @@ public class UIManager : MonoBehaviour
     {
         DisplayScore();
         DisplayGameOverPanel();
+        
+        
     }
 
     //function to display score - counts the transform objects stored in grid
     void DisplayScore()
+    {
+        int score = GetScore();
+        //reference canvas object and return text child, update using count
+        GameObject scoreObject = GameObject.Find("Canvas");
+
+        if(scoreObject != null)
+        {
+            scoreText = scoreObject.GetComponentInChildren<Text>();
+
+            if (scoreText != null)
+                {
+                    scoreText.text = "Score: " + score.ToString();
+                }
+        }
+        
+    }
+    public void DisplayGameOverPanel()
+    {
+        bool isGameOver = BlockController.gameOver;
+        if(isGameOver == true)
+        {
+            PlayGameOverSound();
+            //Debug.Log("Gameover call from UI");
+            gameOverPanel.SetActive(true);
+            DisplayEndGameMessage();
+            
+            
+        }
+
+    }
+    public void RestartGame()
+    {
+        Debug.Log("button clicked");
+        //reset static variables
+        BlockController.ResetGrid();
+        BlockController.gameOver = false;
+        gameOverSoundTrigger = false;
+        //restart scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+    public int GetScore()
     {
         Transform[,] grid = BlockController.GetGrid();
         //loop to count transform objects stored in grid
@@ -40,38 +93,77 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-        //reference canvas object and return text child, update using count
-        GameObject scoreObject = GameObject.Find("Canvas");
+        return count;
+    }
+    public void DisplayEndGameMessage()
+    {
+        int score = GetScore();
+        gameOverText.text = dialogueManager.GetGameOverMessage(score);
+        DisplayButtons(score);
+        
+    }
 
-        if(scoreObject != null)
+    public void DisplayButtons(int score)
+    {
+        //I've probably gone ass ways about this, using essentially the same conditions as in roof dialogue manager
+        //might be a better idea just to do it once in DisplayEndGameManager?!
+        
+        if (score > 119)
         {
-            textObject = scoreObject.GetComponentInChildren<Text>();
-
-            if (textObject != null)
-                {
-                    textObject.text = "Score: " + count.ToString();
-                }
+            foreach(Button button in gameOverButtons)
+            {
+                button.gameObject.SetActive(true);
+            }
+            
+        }
+        else
+        {
+            gameOverButtons[0].gameObject.SetActive(true);
+            gameOverButtons[1].gameObject.SetActive(true);
         }
         
     }
-    public void DisplayGameOverPanel()
+    public void PlayGameOverSound()
     {
-        bool isGameOver = BlockController.gameOver;
-        if(isGameOver == true)
+        if(gameOverSoundTrigger == false)
         {
-            //Debug.Log("Gameover call from UI");
-            gameOverPanel.SetActive(true);
+            int score = GetScore();
+
+            if(score > 119)
+            {
+                GameObject audioObject = GameObject.Find("GameOverSuccessAudioSource");
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
+                if(audioSource != null)
+                {
+                    AudioManager.Instance.PlaySound(audioSource);
+                    Debug.Log("Success sound triggered");
+                    gameOverSoundTrigger = true;
+                }
+                else
+                {
+                    Debug.Log("Audio Source Not Found");
+                }
+            }
+            else
+            {
+                GameObject audioObject = GameObject.Find("GameOverFailAudioSource");
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
+                if(audioSource != null)
+                {
+                    AudioManager.Instance.PlaySound(audioSource);
+                    Debug.Log("Fail sound triggered");
+                    gameOverSoundTrigger = true;
+                }
+                else
+                {
+                    Debug.Log("Audio Source Not Found");
+                }
+            }
         }
 
-    }
-    public void RestartGame()
-    {
-        Debug.Log("button clicked");
-        //reset static variables
-        BlockController.ResetGrid();
-        BlockController.gameOver = false;
-        //restart scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+
 
     }
 
