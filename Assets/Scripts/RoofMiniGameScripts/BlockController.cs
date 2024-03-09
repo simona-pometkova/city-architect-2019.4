@@ -18,18 +18,14 @@ public class BlockController : MonoBehaviour
     public static Transform[,] grid = new Transform[boundWidth, boundHeight];
 
 
+
     //gameover flag
     public static bool gameOver = false;
     
 
-
-
-
-
-
     void Start()
     {
-
+        
 
     }
 
@@ -72,11 +68,13 @@ public class BlockController : MonoBehaviour
                 transform.position += new Vector3(0,-1,0);
                 if(ValidateMove() == false && gameOver == false)
                 {
+                    PlayBlockSound();
                     transform.position += new Vector3(0,1,0);
                     //update the grid with newly placed block
                     UpdateGrid();
                     //disable block this is attached to
                     this.enabled = false;
+                    
                     //spawn new block
                     FindObjectOfType<BlockSpawner>().SpawnBlock();
                     
@@ -140,11 +138,10 @@ public class BlockController : MonoBehaviour
         {
             if (grid[x, boundHeight-2] != null)
             {
-                //ADD DISPLAY MESSAGE FUNCTION HERE
-                //Debug.Log("Call CheckEndGame");
+
                 gameOver = true;
 
-                //END GAME SCRIPT TRANSITION GOES HERE
+
             }
             else
             {
@@ -161,5 +158,15 @@ public class BlockController : MonoBehaviour
         grid = new Transform[boundWidth,boundHeight];
     }
 
+    public void PlayBlockSound()
+    {
+        GameObject audioSource = GameObject.Find("BlockPlacementAudioSource");
+        AudioSource blockSound = audioSource.GetComponent<AudioSource>();
+        if(blockSound != null)
+        {
+            AudioManager.Instance.PlaySound(blockSound);
+        }
+
+    }
 
 }
