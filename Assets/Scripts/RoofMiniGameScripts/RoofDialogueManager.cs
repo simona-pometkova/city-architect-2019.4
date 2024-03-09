@@ -24,7 +24,7 @@ public class RoofDialogueManager : MonoBehaviour
             {
                 return (gameOverMessages[0] + score.ToString());
             }
-            else if(score < 135 && score > 119)
+            else if(score < 150 && score > 119)
             {
                 return (gameOverMessages[1] + score.ToString());
             }

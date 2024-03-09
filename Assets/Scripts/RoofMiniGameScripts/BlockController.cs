@@ -22,11 +22,6 @@ public class BlockController : MonoBehaviour
     public static bool gameOver = false;
     
 
-
-
-
-
-
     void Start()
     {
 
@@ -140,11 +135,10 @@ public class BlockController : MonoBehaviour
         {
             if (grid[x, boundHeight-2] != null)
             {
-                //ADD DISPLAY MESSAGE FUNCTION HERE
-                //Debug.Log("Call CheckEndGame");
+
                 gameOver = true;
 
-                //END GAME SCRIPT TRANSITION GOES HERE
+
             }
             else
             {
