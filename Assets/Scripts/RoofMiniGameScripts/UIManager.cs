@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Text gameOverText;
     public BlockController blockController;
     public RoofDialogueManager dialogueManager;
+
+    private bool gameOverSoundTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class UIManager : MonoBehaviour
             button.gameObject.SetActive(false);
         }
         
+        
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class UIManager : MonoBehaviour
     {
         DisplayScore();
         DisplayGameOverPanel();
+        
         
     }
 
@@ -54,9 +58,12 @@ public class UIManager : MonoBehaviour
         bool isGameOver = BlockController.gameOver;
         if(isGameOver == true)
         {
+            PlayGameOverSound();
             //Debug.Log("Gameover call from UI");
             gameOverPanel.SetActive(true);
             DisplayEndGameMessage();
+            
+            
         }
 
     }
@@ -66,6 +73,7 @@ public class UIManager : MonoBehaviour
         //reset static variables
         BlockController.ResetGrid();
         BlockController.gameOver = false;
+        gameOverSoundTrigger = false;
         //restart scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -106,6 +114,7 @@ public class UIManager : MonoBehaviour
             {
                 button.gameObject.SetActive(true);
             }
+            
         }
         else
         {
@@ -113,6 +122,49 @@ public class UIManager : MonoBehaviour
             gameOverButtons[1].gameObject.SetActive(true);
         }
         
+    }
+    public void PlayGameOverSound()
+    {
+        if(gameOverSoundTrigger == false)
+        {
+            int score = GetScore();
+
+            if(score > 119)
+            {
+                GameObject audioObject = GameObject.Find("GameOverSuccessAudioSource");
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
+                if(audioSource != null)
+                {
+                    AudioManager.Instance.PlaySound(audioSource);
+                    Debug.Log("Success sound triggered");
+                    gameOverSoundTrigger = true;
+                }
+                else
+                {
+                    Debug.Log("Audio Source Not Found");
+                }
+            }
+            else
+            {
+                GameObject audioObject = GameObject.Find("GameOverFailAudioSource");
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
+                if(audioSource != null)
+                {
+                    AudioManager.Instance.PlaySound(audioSource);
+                    Debug.Log("Fail sound triggered");
+                    gameOverSoundTrigger = true;
+                }
+                else
+                {
+                    Debug.Log("Audio Source Not Found");
+                }
+            }
+        }
+
+
+
+
+
     }
 
 }

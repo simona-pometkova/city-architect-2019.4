@@ -12,5 +12,10 @@ public class AudioManager : Singleton<AudioManager>
     *by other scripts without having to create it's own instance??
     * Let me know if I have that completely wrong and I'll move these functions elsewhere */
 
-    
+
+    public void PlaySound(AudioSource audioSource)
+    {
+        
+        audioSource.Play();
+    }
 }
