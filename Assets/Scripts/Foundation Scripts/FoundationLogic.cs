@@ -7,23 +7,26 @@ using UnityEngine.Events;
 
 public class FoundationLogic : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Public variables - assign in unity insepctor
     public TMP_Text heightText;
     public TMP_Text widthText;
     public InputField answerInput;
     public TMP_Text scoreText;
+    //validation panel popup if invalid input - ie not an integer
     public GameObject validationPanel;
 
-    private int[] questionArray;
 
+    //Keep score
     private int score;
-
+    //question number - used to determine difficulty and end game check when it gets to 30
     private int questionNum = 1;
 
 
     void Start()
     {
+        //set validation panel false
         validationPanel.SetActive(false);
+        //generate first question
         GenerateQuestion();
 
         
@@ -32,7 +35,9 @@ public class FoundationLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //update score
         UpdateScore();
+        //event listener for answer validation popup
         answerInput.onValueChanged.AddListener(ValidateInput);
         
     }
@@ -40,6 +45,8 @@ public class FoundationLogic : MonoBehaviour
     void GenerateQuestion()
     {
 
+        //This method generates random numbers, stores them in the text variables
+        //with increasing difficulty depending on the number of questions answered
         int height, width;
 
         if(questionNum <= 9)
@@ -69,6 +76,8 @@ public class FoundationLogic : MonoBehaviour
 
     public void CheckAnswer()
     {
+        //assign in inspector on button click
+        //checks the input field if it's an integer and compares it to heightvalue * widthvalue
         int answer, height, width;
         height = int.Parse(heightText.text);
         width = int.Parse(widthText.text);
@@ -105,12 +114,15 @@ public class FoundationLogic : MonoBehaviour
 
     void DisplayValidationError(float duration)
     {
+        //display panel
         validationPanel.SetActive(true);
+        //start coroutine to display panel for set duration
         StartCoroutine(CloseDelay(duration));
     }
-
+    
     void ValidateInput(string fieldInput)
     {
+        //validates input. trys to part an int and returns a bool.
         int result;
         bool isInt = int.TryParse(answerInput.text, out result);
 
@@ -119,6 +131,7 @@ public class FoundationLogic : MonoBehaviour
             DisplayValidationError(2f);
         }
     }
+    //used for the coroutine delay and sets panel back to false;
     IEnumerator CloseDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
