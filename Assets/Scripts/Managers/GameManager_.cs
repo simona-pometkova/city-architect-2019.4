@@ -6,7 +6,7 @@ namespace Assets.Scripts
     public class GameManager_ : Singleton<GameManager_>
     {
         [SerializeField] private LevelManager _levelManager;
-        [SerializeField] private AudioManager _audioManager;
+        //[SerializeField] private AudioManager _audioManager;
         [SerializeField] private PuzzleManager _puzzleManager;
         [SerializeField] private DialogueManager _dialogueManager;
 
@@ -15,12 +15,6 @@ namespace Assets.Scripts
          * deleted and etc as I notice some things may be unnecessary or made better.
          */
         private int _counter = 1;
-
-        public void Update()
-        {
-            _counter++;
-            Debug.Log(_counter);
-        }
 
         public void StartGame()
         {

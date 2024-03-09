@@ -8,5 +8,10 @@ namespace Assets.Scripts
         [SerializeField] private Dialogue _initialDialogue;
         // Add other dialogues reflecting the player's progress (i.e. after 1st puzzle, 
         // after 2nd puzzle, success, failure, completion etc.)
+
+        public void StartDialogue()
+        {
+            Debug.Log("mayor clicked");
+        }
     }
 }
