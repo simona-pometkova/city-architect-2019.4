@@ -12,6 +12,7 @@ public class FoundationLogic : MonoBehaviour
     public TMP_Text widthText;
     public InputField answerInput;
     public TMP_Text scoreText;
+    public TMP_Text questionNumberText;
     //validation panel popup if invalid input - ie not an integer
     public GameObject validationPanel;
 
@@ -35,8 +36,9 @@ public class FoundationLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //update score
+        //update score and question title
         UpdateScore();
+        UpdateQuestionTitle();
         //event listener for answer validation popup
         answerInput.onValueChanged.AddListener(ValidateInput);
         
@@ -110,6 +112,10 @@ public class FoundationLogic : MonoBehaviour
     void UpdateScore()
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+    void UpdateQuestionTitle()
+    {
+        questionNumberText.text = "Question #" + questionNum.ToString();
     }
 
     void DisplayValidationError(float duration)
