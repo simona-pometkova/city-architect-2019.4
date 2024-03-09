@@ -13,6 +13,7 @@ public class FoundationLogic : MonoBehaviour
     public InputField answerInput;
     public TMP_Text scoreText;
     public TMP_Text questionNumberText;
+    public TMP_Text timerText;
     //validation panel popup if invalid input - ie not an integer
     public GameObject validationPanel;
 
@@ -21,14 +22,19 @@ public class FoundationLogic : MonoBehaviour
     private int score;
     //question number - used to determine difficulty and end game check when it gets to 30
     private int questionNum = 1;
+    private float timeRemaining = 60f;
+    private bool timerActive = false;
 
 
     void Start()
     {
         //set validation panel false
         validationPanel.SetActive(false);
+        timerActive = true;
         //generate first question
         GenerateQuestion();
+        //event listener for answer validation popup
+        answerInput.onValueChanged.AddListener(ValidateInput);
 
         
     }
@@ -39,8 +45,8 @@ public class FoundationLogic : MonoBehaviour
         //update score and question title
         UpdateScore();
         UpdateQuestionTitle();
-        //event listener for answer validation popup
-        answerInput.onValueChanged.AddListener(ValidateInput);
+        UpdateTimer();
+        
         
     }
 
@@ -135,6 +141,15 @@ public class FoundationLogic : MonoBehaviour
         if(!isInt && answerInput.text != "")
         {
             DisplayValidationError(2f);
+        }
+    }
+
+    void UpdateTimer()
+    {
+        timerText.text = "Time: " + Mathf.Max(0,Mathf.RoundToInt(timeRemaining)).ToString();
+        if(timerActive)
+        {
+            timeRemaining -= Time.deltaTime;
         }
     }
     //used for the coroutine delay and sets panel back to false;
