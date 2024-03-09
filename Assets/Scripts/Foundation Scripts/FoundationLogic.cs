@@ -14,8 +14,11 @@ public class FoundationLogic : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text questionNumberText;
     public TMP_Text timerText;
+    public TMP_Text endGameText;
     //validation panel popup if invalid input - ie not an integer
     public GameObject validationPanel;
+    public GameObject endGamePanel;
+
 
 
     //Keep score
@@ -30,6 +33,7 @@ public class FoundationLogic : MonoBehaviour
     {
         //set validation panel false
         validationPanel.SetActive(false);
+        endGamePanel.SetActive(false);
         timerActive = true;
         //generate first question
         GenerateQuestion();
@@ -46,6 +50,7 @@ public class FoundationLogic : MonoBehaviour
         UpdateScore();
         UpdateQuestionTitle();
         UpdateTimer();
+        EndTimeCheck();
         
         
     }
@@ -92,7 +97,7 @@ public class FoundationLogic : MonoBehaviour
         answer = int.Parse(answerInput.text);
         if(questionNum == 30)
             {
-                //end game logic
+                EndGame();
             }
         else
             {
@@ -150,6 +155,40 @@ public class FoundationLogic : MonoBehaviour
         if(timerActive)
         {
             timeRemaining -= Time.deltaTime;
+        }
+    }
+
+    void EndTimeCheck()
+    {
+        if (timerActive && timeRemaining <= 0)
+            {
+                // Timer has run out, invoke the onTimerEnd event
+                timerActive = false;
+                EndGame();
+                Debug.Log("Time run out");
+            }
+    }
+
+    void EndGame()
+    {
+        endGamePanel.SetActive(true);
+        timerActive = false;
+
+        if(score <= 10)
+        {
+            endGameText.text = "You scored: " + score.ToString();
+        }
+        else if(score <=20)
+        {
+            endGameText.text = "Well Done! You scored: " + score.ToString();
+        }
+        else if(score <= 30)
+        {
+            endGameText.text = "Amazing! You scored: " + score.ToString();
+        }
+        else if(score == 30)
+        {
+            endGameText.text = "You're a Genius! You scored: " + score.ToString();
         }
     }
     //used for the coroutine delay and sets panel back to false;
