@@ -154,6 +154,7 @@ MonoBehaviour:
   widthText: {fileID: 999367815}
   answerInput: {fileID: 1281477614}
   scoreText: {fileID: 704404680}
+  questionNumberText: {fileID: 1045269841}
   validationPanel: {fileID: 925167390}
 --- !u!4 &184079883
 Transform:
