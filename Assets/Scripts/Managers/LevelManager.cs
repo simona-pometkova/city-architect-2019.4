@@ -10,18 +10,15 @@ namespace Assets.Scripts
     {
         public string MainMenuScene => _mainMenuScene;
         public string CityScene => _cityScene;
-        public string FoundationScene => _foundationScene;
-        public string RoofScene => _roofScene;
-        public string WallsScene => _wallsScene;
         public string EndGameScene => _endGameScene;
 
         [SerializeField, Scene] private string _mainMenuScene;
         [SerializeField, Scene] private string _cityScene;
-        [SerializeField, Scene] private string _foundationScene;
-        [SerializeField, Scene] private string _roofScene;
-        [SerializeField, Scene] private string _wallsScene;
+        [SerializeField, Scene] private string _nextScene;
         [SerializeField, Scene] private string _endGameScene;
         
         public void LoadScene(string sceneName) => SceneManager.LoadScene(sceneName);
+
+        public void LoadNext() => SceneManager.LoadScene(_nextScene);
     }
 }

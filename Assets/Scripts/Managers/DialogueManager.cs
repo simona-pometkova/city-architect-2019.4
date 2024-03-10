@@ -15,6 +15,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private Dialogue _currentDialogue;
 
     private int _index = 0;
+    private bool _sentenceFinished;
 
     public event Action OnDialogueEnded; 
 
@@ -22,7 +23,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (_currentDialogue != null)
         {
-            _dialogueButtonText.text = _currentDialogue.Sentences[0].ButtonText;
+            _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
             NextSentence();
         }
     }
@@ -33,16 +34,17 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             StopAllCoroutines();
 
-            if (_dialogueText.text != _currentDialogue.Sentences[_index].SentenceText)
+            if (!_sentenceFinished)
             {
                 _dialogueText.text = _currentDialogue.Sentences[_index].SentenceText;
                 _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
+                _sentenceFinished = true;
             }
             else
             {
-                _index++;
-                if (_index != _currentDialogue.Sentences.Count)
+                if (_index != _currentDialogue.Sentences.Count - 1)
                 {
+                    _index++;
                     NextSentence();
                 }
                 else
@@ -55,11 +57,10 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void NextSentence()
     {
-        if (_index <= _currentDialogue.Sentences.Count)
-        {
-            _dialogueText.text = "";
-            StartCoroutine(WriteSentence());
-        }
+        _sentenceFinished = false;
+        _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
+        _dialogueText.text = "";
+        StartCoroutine(WriteSentence());
     }
 
     IEnumerator WriteSentence()
@@ -70,8 +71,7 @@ public class DialogueManager : Singleton<DialogueManager>
             yield return new WaitForSeconds(_dialogueSpeed);
         }
 
-        _index++;
-        _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
+        _sentenceFinished = true;
     }
 }
 

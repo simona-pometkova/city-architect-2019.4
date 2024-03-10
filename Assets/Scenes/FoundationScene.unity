@@ -312,7 +312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.399994, y: 2.7000122}
+  m_AnchoredPosition: {x: -4.4000244, y: 2.7000122}
   m_SizeDelta: {x: 720.8406, y: 1249.3003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626654115
@@ -520,6 +520,11 @@ PrefabInstance:
       propertyPath: introDialogueText
       value: 
       objectReference: {fileID: 2034528735}
+    - target: {fileID: 6180476708810257234, guid: 07122cccd6993ed4084848fed4df2752,
+        type: 3}
+      propertyPath: _nextScene
+      value: RoofScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6180476709669834988, guid: 07122cccd6993ed4084848fed4df2752,
         type: 3}
       propertyPath: m_Name
@@ -637,18 +642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introDialogueText: {fileID: 0}
-  endDialogueText: {fileID: 0}
-  introDialogueTexts:
-  - Hi there, Architect! I'm Max, the Mayor of Puzzleton. Welcome to our vibrant
-    city.
-  - Our city needs you help, Architect. We need to build a new City Hall. We've got
-    three unique challenges for you, and time is of the essence.
-  - Our city's 100th anniversary is just around the corner, and we need the project
-    done by then. It's a tall order, but I believe you're the perfect person for
-    the job.
-  - So, what do you say? Will you accept this challenge and help us make history?
-  endDialogueTexts: []
+  _dialogueText: {fileID: 0}
+  _dialogueButtonText: {fileID: 0}
+  _dialogueSpeed: 0
+  _currentDialogue: {fileID: 0}
 --- !u!114 &895909074
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -138,9 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuScene: MainScreen
   _cityScene: CityScene
-  _foundationScene: FoundationScene
-  _roofScene: RoofScene
-  _wallsScene: WallsScene
+  _nextScene: MainScreen
   _endGameScene: EndScene
 --- !u!1 &6180476709300716616
 GameObject:

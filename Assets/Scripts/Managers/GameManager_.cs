@@ -16,13 +16,12 @@ namespace Assets.Scripts
 
         public void StartGame()
         {
-            // Call the LevelManager and load the CityScene
             _levelManager.LoadScene(_levelManager.CityScene);
         }
 
         public void ProgressGame()
         {
-            _levelManager.LoadScene(_levelManager.FoundationScene);
+            _levelManager.LoadNext();
         }
 
         public void EndGame()
