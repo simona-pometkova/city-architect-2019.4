@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dialogueText: {fileID: 0}
+  _dialogueButtonText: {fileID: 0}
+  _dialogueSpeed: 0
+  _currentDialogue: {fileID: 0}
 --- !u!1 &6180476708810257232
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuScene: MainScreen
   _cityScene: CityScene
+  _foundationScene: FoundationScene
+  _roofScene: RoofScene
+  _wallsScene: WallsScene
+  _endGameScene: EndScene
 --- !u!1 &6180476709300716616
 GameObject:
   m_ObjectHideFlags: 0
