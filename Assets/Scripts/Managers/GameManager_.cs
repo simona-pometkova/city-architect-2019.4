@@ -5,8 +5,12 @@ namespace Assets.Scripts
 {
     public class GameManager_ : Singleton<GameManager_>
     {
+        public int TotalScore => _totalScore;
+
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private DialogueManager _dialogueManager;
+
+        public int _totalScore = 0;
 
         private void Start()
         {
