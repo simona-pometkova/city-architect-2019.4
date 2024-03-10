@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: AverageResultEndGameDialogue
   m_EditorClassIdentifier: 
   _sentences:
-  - Great job! I love it, pal! This City Hall is perfect for our little city.
-  - Thank you so much for your work. Our citizens will be so happy!
-  - Goodbye and come back any time!
+  - SentenceText: Great job! I love it, pal! This City Hall is perfect for our little
+      city.
+    ButtonText: Continue
+  - SentenceText: Thank you so much for your work. Our citizens will be so happy!
+    ButtonText: Continue
+  - SentenceText: Goodbye and come back any time!
+    ButtonText: End

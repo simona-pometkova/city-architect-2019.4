@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: GreatResultEndGameDialogue
   m_EditorClassIdentifier: 
   _sentences:
-  - Wow, just look at that shiny palace! Fantastic work, pal.
-  - Thank you so much for your work. Our citizens will be so happy!
-  - Goodbye and come back any time!
+  - SentenceText: Wow, just look at that shiny palace! Fantastic work, pal.
+    ButtonText: Continue
+  - SentenceText: Thank you so much for your work. Our citizens will be so happy!
+    ButtonText: Continue
+  - SentenceText: Goodbye and come back any time!
+    ButtonText: End

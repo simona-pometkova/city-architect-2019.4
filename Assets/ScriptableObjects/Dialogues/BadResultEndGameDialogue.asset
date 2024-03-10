@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: BadResultEndGameDialogue
   m_EditorClassIdentifier: 
   _sentences:
-  - Oh no! What have you done? Look at those holes everywhere!
-  - "I guess we\u2019ll have to cancel the big celebration\u2026 What a shame."
-  - Goodbye.
+  - SentenceText: Oh no! What have you done? Look at those holes everywhere!
+    ButtonText: Continue
+  - SentenceText: "I guess we\u2019ll have to cancel the big celebration\u2026 What
+      a shame."
+    ButtonText: Continue
+  - SentenceText: Goodbye.
+    ButtonText: End
