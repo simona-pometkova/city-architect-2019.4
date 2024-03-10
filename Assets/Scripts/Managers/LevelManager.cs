@@ -14,7 +14,7 @@ namespace Assets.Scripts
 
         [SerializeField, Scene] private string _mainMenuScene;
         [SerializeField, Scene] private string _cityScene;
-        [SerializeField, Scene] private string _nextScene;
+        [SerializeField, Scene] private string _nextScene; // This is set in every Scene respectively
         [SerializeField, Scene] private string _endGameScene;
         
         public void LoadScene(string sceneName) => SceneManager.LoadScene(sceneName);

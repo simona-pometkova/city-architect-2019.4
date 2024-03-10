@@ -12,7 +12,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private TextMeshProUGUI _dialogueButtonText;
     [SerializeField] private float _dialogueSpeed;
-    [SerializeField] private Dialogue _currentDialogue;
+    [SerializeField] private Dialogue _currentDialogue; // This is set in every Scene respectively
 
     private int _index = 0;
     private bool _sentenceFinished;

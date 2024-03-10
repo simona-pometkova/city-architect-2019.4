@@ -26,8 +26,7 @@ namespace Assets.Scripts
 
         public void EndGame()
         {
-            // Call the PuzzleManager to get the final score and implement logic
-            // depending on what it is. 
+            _levelManager.LoadScene(_levelManager.EndGameScene);
         }
     }
 }
