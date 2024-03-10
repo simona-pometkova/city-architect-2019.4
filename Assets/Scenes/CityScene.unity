@@ -561,7 +561,6 @@ GameObject:
   - component: {fileID: 1108597933}
   - component: {fileID: 1108597935}
   - component: {fileID: 1108597934}
-  - component: {fileID: 1108597936}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -626,30 +625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108597932}
   m_CullTransparentMesh: 1
---- !u!114 &1108597936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108597932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introDialogueText: {fileID: 131100439}
-  endDialogueText: {fileID: 0}
-  introDialogueTexts:
-  - Hi there, Architect! I'm Max, the Mayor of Puzzleton. Welcome to our vibrant
-    city.
-  - Our city needs you help, Architect. We need to build a new City Hall. We've got
-    three unique challenges for you, and time is of the essence.
-  - Our city's 100th anniversary is just around the corner, and we need the project
-    done by then. It's a tall order, but I believe you're the perfect person for
-    the job.
-  - So, what do you say? Will you accept this challenge and help us make history?
-  endDialogueTexts: []
 --- !u!1 &1311816405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1041,6 @@ GameObject:
   - component: {fileID: 1800307913}
   - component: {fileID: 1800307912}
   - component: {fileID: 1800307911}
-  - component: {fileID: 1800307915}
   m_Layer: 5
   m_Name: DialogueButton
   m_TagString: Untagged
@@ -1235,30 +1209,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800307909}
   m_CullTransparentMesh: 1
---- !u!114 &1800307915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800307909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introDialogueText: {fileID: 131100439}
-  endDialogueText: {fileID: 0}
-  introDialogueTexts:
-  - Hi there, Architect! I'm Max, the Mayor of Puzzleton. Welcome to our vibrant
-    city.
-  - Our city needs you help, Architect. We need to build a new City Hall. We've got
-    three unique challenges for you, and time is of the essence.
-  - Our city's 100th anniversary is just around the corner, and we need the project
-    done by then. It's a tall order, but I believe you're the perfect person for
-    the job.
-  - So, what do you say? Will you accept this challenge and help us make history?
-  endDialogueTexts: []
 --- !u!1 &1834222998
 GameObject:
   m_ObjectHideFlags: 0
