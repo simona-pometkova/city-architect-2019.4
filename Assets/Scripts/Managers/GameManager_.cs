@@ -6,7 +6,6 @@ namespace Assets.Scripts
     public class GameManager_ : Singleton<GameManager_>
     {
         [SerializeField] private LevelManager _levelManager;
-        [SerializeField] private PuzzleManager _puzzleManager;
         [SerializeField] private DialogueManager _dialogueManager;
 
         private void Start()
