@@ -2566,7 +2566,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverButtons:
   - {fileID: 1034639447}
-  - {fileID: 0}
   - {fileID: 69235738}
   gameOverPanel: {fileID: 998886378}
   startGamePanel: {fileID: 1217522596}
