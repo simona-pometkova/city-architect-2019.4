@@ -177,8 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hi there, Architect! \nI'm Max, the Mayor of Puzzleton. \nWelcome to our
-    vibrant city."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -247,13 +246,13 @@ MonoBehaviour:
   m_margin: {x: -143.07747, y: -68.17188, z: -114.016846, w: -110.35693}
   m_textInfo:
     textComponent: {fileID: 131100439}
-    characterCount: 84
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 15
-    wordCount: 14
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 3
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -394,6 +393,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundtrack: {fileID: 0}
+--- !u!114 &1032256020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6180476708700165679, guid: 07122cccd6993ed4084848fed4df2752,
+    type: 3}
+  m_PrefabInstance: {fileID: 1431783459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1083720334
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +714,22 @@ PrefabInstance:
       propertyPath: introDialogueText
       value: 
       objectReference: {fileID: 131100439}
+    - target: {fileID: 6180476708700165679, guid: 07122cccd6993ed4084848fed4df2752,
+        type: 3}
+      propertyPath: _dialogueText
+      value: 
+      objectReference: {fileID: 131100439}
+    - target: {fileID: 6180476708700165679, guid: 07122cccd6993ed4084848fed4df2752,
+        type: 3}
+      propertyPath: _dialogueSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180476708700165679, guid: 07122cccd6993ed4084848fed4df2752,
+        type: 3}
+      propertyPath: _currentDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 621dd020793f1954aa3734393ced8dc3,
+        type: 2}
     - target: {fileID: 6180476709669834988, guid: 07122cccd6993ed4084848fed4df2752,
         type: 3}
       propertyPath: m_Name
@@ -1150,23 +1177,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1032256020}
+        m_MethodName: Skip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: 1e409cdec0de05b4a95487342293294d, type: 3}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

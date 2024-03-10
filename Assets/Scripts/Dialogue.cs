@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Dialogue : ScriptableObject
 {
-    [SerializeField] private List<string> _characterOptions;
-    [SerializeField] private List<string> _playerOptions;
+    public List<string> Sentences => _sentences;
+
+    [SerializeField] private List<string> _sentences;
 }

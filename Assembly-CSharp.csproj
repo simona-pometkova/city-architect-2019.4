@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scenes\CityScene\DialogueButtonBehavior.cs" />
      <Compile Include="Assets\Scripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Managers\DialogueManager.cs" />
@@ -66,6 +67,9 @@
      <Compile Include="Assets\Scripts\Puzzle.cs" />
      <Compile Include="Assets\Scripts\RoofMiniGameScripts\BlockController.cs" />
      <Compile Include="Assets\Scripts\RoofMiniGameScripts\BlockSpawner.cs" />
+     <Compile Include="Assets\Scripts\RoofMiniGameScripts\CloudSpawner.cs" />
+     <Compile Include="Assets\Scripts\RoofMiniGameScripts\RoofDialogueManager.cs" />
+     <Compile Include="Assets\Scripts\RoofMiniGameScripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
      <Compile Include="Assets\Scripts\Soundtrack.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
