@@ -89,13 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43597c258197fa64e8e6f5808bacc481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startGameDialogue: {fileID: 11400000, guid: 621dd020793f1954aa3734393ced8dc3, type: 2}
-  _greatResultEndGameDialogue: {fileID: 11400000, guid: 8a18c6ae94e35f947a6d41b8a226e0ff,
-    type: 2}
-  _averageResultEndGameDialogue: {fileID: 11400000, guid: 5af97cebae343b5478641fcc601d395e,
-    type: 2}
-  _badResultEndGameDialogue: {fileID: 11400000, guid: 19f3843ddb0a25545ad5d7110ee4ebf3,
-    type: 2}
+  _dialogueText: {fileID: 0}
+  _dialogueButtonText: {fileID: 0}
+  _dialogueSpeed: 0
+  _currentDialogue: {fileID: 0}
 --- !u!1 &6180476708810257232
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuScene: MainScreen
   _cityScene: CityScene
+  _foundationScene: FoundationScene
+  _roofScene: RoofScene
+  _wallsScene: WallsScene
+  _endGameScene: EndScene
 --- !u!1 &6180476709300716616
 GameObject:
   m_ObjectHideFlags: 0

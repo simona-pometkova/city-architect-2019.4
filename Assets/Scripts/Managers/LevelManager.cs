@@ -10,18 +10,18 @@ namespace Assets.Scripts
     {
         public string MainMenuScene => _mainMenuScene;
         public string CityScene => _cityScene;
+        public string FoundationScene => _foundationScene;
+        public string RoofScene => _roofScene;
+        public string WallsScene => _wallsScene;
+        public string EndGameScene => _endGameScene;
 
         [SerializeField, Scene] private string _mainMenuScene;
         [SerializeField, Scene] private string _cityScene;
-        // Reference the other scenes.
-
-        private Dictionary<string, int> _loadOrder = new Dictionary<string, int>(); // Order of game scenes. Is it mutable?
-
+        [SerializeField, Scene] private string _foundationScene;
+        [SerializeField, Scene] private string _roofScene;
+        [SerializeField, Scene] private string _wallsScene;
+        [SerializeField, Scene] private string _endGameScene;
+        
         public void LoadScene(string sceneName) => SceneManager.LoadScene(sceneName);
-
-        public void ProgressNext()
-        {
-            // Load the next scene from the _loadOrder dictionary.
-        }
     }
 }

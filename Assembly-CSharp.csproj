@@ -62,7 +62,6 @@
      <Compile Include="Assets\Scripts\Managers\GameManager_.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PuzzleManager.cs" />
-     <Compile Include="Assets\Scripts\Mayor.cs" />
      <Compile Include="Assets\Scripts\PlayAudioOnClick.cs" />
      <Compile Include="Assets\Scripts\Puzzle.cs" />
      <Compile Include="Assets\Scripts\RoofMiniGameScripts\BlockController.cs" />

@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: StartGameDialogue
   m_EditorClassIdentifier: 
   _sentences:
-  - "Hi there, Architect! I\u2019m Max, the Mayor of Puzzleton. Welcome to our vibrant
-    city!"
-  - "Our city needs your help, Architect. We need to build a new City Hall. We\u2019ve
-    got three unique challenges for you, and time is of the essence."
-  - "Our city\u2019s 100th anniversary is just around the corner, and we need the
-    project done by then. It\u2019s a tall order, but I believe you\u2019re the perfect
-    person for the job."
-  - So, what do you say? Will you accept this challenge and help us make history?
+  - SentenceText: "Hi there, Architect! I\u2019m Max, the Mayor of Puzzleton. Welcome
+      to our vibrant city!"
+    ButtonText: Talk to Mayor
+  - SentenceText: "Our city needs your help, Architect. We need to build a new City
+      Hall. We\u2019ve got three unique challenges for you, and time is of the essence."
+    ButtonText: Continue
+  - SentenceText: "Our city\u2019s 100th anniversary is just around the corner, and
+      we need the project done by then. It\u2019s a tall order, but I believe you\u2019re
+      the perfect person for the job."
+    ButtonText: Continue
+  - SentenceText: So, what do you say? Will you accept this challenge and help us
+      make history?
+    ButtonText: Accept

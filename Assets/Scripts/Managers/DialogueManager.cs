@@ -5,19 +5,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
     [SerializeField] private TextMeshProUGUI _dialogueText;
+    [SerializeField] private TextMeshProUGUI _dialogueButtonText;
     [SerializeField] private float _dialogueSpeed;
     [SerializeField] private Dialogue _currentDialogue;
 
     private int _index = 0;
 
+    public event Action OnDialogueEnded; 
+
     private void Start()
     {
         if (_currentDialogue != null)
         {
+            _dialogueButtonText.text = _currentDialogue.Sentences[0].ButtonText;
             NextSentence();
         }
     }
@@ -28,9 +33,10 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             StopAllCoroutines();
 
-            if (_dialogueText.text != _currentDialogue.Sentences[_index])
+            if (_dialogueText.text != _currentDialogue.Sentences[_index].SentenceText)
             {
-                _dialogueText.text = _currentDialogue.Sentences[_index];
+                _dialogueText.text = _currentDialogue.Sentences[_index].SentenceText;
+                _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
             }
             else
             {
@@ -38,6 +44,10 @@ public class DialogueManager : Singleton<DialogueManager>
                 if (_index != _currentDialogue.Sentences.Count)
                 {
                     NextSentence();
+                }
+                else
+                {
+                    OnDialogueEnded?.Invoke();
                 }
             }
         }
@@ -54,13 +64,14 @@ public class DialogueManager : Singleton<DialogueManager>
 
     IEnumerator WriteSentence()
     {
-        foreach (char character in _currentDialogue.Sentences[_index].ToCharArray())
+        foreach (char character in _currentDialogue.Sentences[_index].SentenceText.ToCharArray())
         {
             _dialogueText.text += character;
             yield return new WaitForSeconds(_dialogueSpeed);
         }
 
         _index++;
+        _dialogueButtonText.text = _currentDialogue.Sentences[_index].ButtonText;
     }
 }
 
