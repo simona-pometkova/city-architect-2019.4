@@ -10,7 +10,7 @@ public class BlockSpawner : MonoBehaviour
     void Start()
     {
         //spawn a block at the start of the game
-        SpawnBlock();
+        //SpawnBlock();
     }
 
     // Update is called once per frame

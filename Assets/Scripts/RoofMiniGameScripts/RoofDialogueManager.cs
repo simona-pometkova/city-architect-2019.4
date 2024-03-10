@@ -13,7 +13,7 @@ public class RoofDialogueManager : MonoBehaviour
 
     public string GetGameOverMessage(int score)
     {
-        if(gameOverMessages.Length < 3)
+        if(gameOverMessages.Length < 2)
         {
             Debug.LogError("Array size not large enough");
             return "";
@@ -24,13 +24,9 @@ public class RoofDialogueManager : MonoBehaviour
             {
                 return (gameOverMessages[0] + score.ToString());
             }
-            else if(score < 150 && score > 119)
-            {
-                return (gameOverMessages[1] + score.ToString());
-            }
             else
             {
-                return (gameOverMessages[2]);
+                return (gameOverMessages[1] + score.ToString());
             }
         }
 
