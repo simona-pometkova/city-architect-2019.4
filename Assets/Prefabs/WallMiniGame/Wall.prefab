@@ -422,11 +422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b9b1fce1b7fec48a7c6f43835ea3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialBrickShowDuration: 1.5
+  _initialBrickShowDuration: 1.1
   _brickShowDurationDecrease: 0.3
   _initialBricksInSequence: 4
   _bricksInSequenceIncrease: 2
-  _timeBetweenBricks: 0.3
+  _timeBetweenBricks: 0.2
+  _progressText: {fileID: 0}
+  _scoreText: {fileID: 0}
+  _button: {fileID: 0}
 --- !u!1 &1464304003182080083
 GameObject:
   m_ObjectHideFlags: 0
