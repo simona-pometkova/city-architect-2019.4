@@ -20,6 +20,9 @@ public class FoundationLogic : MonoBehaviour
     public GameObject endGamePanel;
     public GameObject startPanel;
 
+    public AudioSource correctSound;
+    public AudioSource incorrectSound;
+
 
 
     //Keep score
@@ -114,16 +117,20 @@ public class FoundationLogic : MonoBehaviour
                 if(height * width == answer)
                     {
                         Debug.Log("Correct");
+                        AudioManager.Instance.PlaySound(correctSound);
                         answerInput.text = "";
                         GenerateQuestion();
+                        FocusInputField();
                         questionNum++;
                         score++;
                     }
                 else
                     {
                         Debug.Log("Wrong");
+                        AudioManager.Instance.PlaySound(incorrectSound);
                         answerInput.text = "";
                         GenerateQuestion();
+                        FocusInputField();
                         questionNum++;
 
                     }
@@ -199,6 +206,15 @@ public class FoundationLogic : MonoBehaviour
         else if(score == 30)
         {
             endGameText.text = "You're a Genius! You scored: " + score.ToString();
+        }
+    }
+
+    void FocusInputField()
+    {
+        if(answerInput != null)
+        {
+            answerInput.Select();
+            answerInput.ActivateInputField();
         }
     }
     
