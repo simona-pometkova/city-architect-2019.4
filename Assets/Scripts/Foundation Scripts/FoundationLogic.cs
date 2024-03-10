@@ -18,6 +18,7 @@ public class FoundationLogic : MonoBehaviour
     //validation panel popup if invalid input - ie not an integer
     public GameObject validationPanel;
     public GameObject endGamePanel;
+    public GameObject startPanel;
 
 
 
@@ -32,11 +33,9 @@ public class FoundationLogic : MonoBehaviour
     void Start()
     {
         //set validation panel false
-        validationPanel.SetActive(false);
-        endGamePanel.SetActive(false);
-        timerActive = true;
-        //generate first question
-        GenerateQuestion();
+        startPanel.SetActive(true);
+
+        
         //event listener for answer validation popup
         answerInput.onValueChanged.AddListener(ValidateInput);
 
@@ -53,6 +52,17 @@ public class FoundationLogic : MonoBehaviour
         EndTimeCheck();
         
         
+    }
+    public void GameStart()
+    {
+        startPanel.SetActive(false);
+        timerActive = true;
+        validationPanel.SetActive(false);
+        endGamePanel.SetActive(false);
+        score = 0;
+        questionNum = 1;
+        timeRemaining = 60f;
+        GenerateQuestion();
     }
 
     void GenerateQuestion()
@@ -191,6 +201,7 @@ public class FoundationLogic : MonoBehaviour
             endGameText.text = "You're a Genius! You scored: " + score.ToString();
         }
     }
+    
     //used for the coroutine delay and sets panel back to false;
     IEnumerator CloseDelay(float delay)
     {
