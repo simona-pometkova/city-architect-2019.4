@@ -8,22 +8,32 @@ public class UIManager : MonoBehaviour
 {
     public Button[] gameOverButtons;
     public GameObject gameOverPanel;
+    public GameObject startGamePanel;
     public Text scoreText;
     public Text gameOverText;
     public BlockController blockController;
     public RoofDialogueManager dialogueManager;
+    public BlockSpawner blockSpawner;
 
     private bool gameOverSoundTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
+
+        startGamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
         foreach(Button button in gameOverButtons)
         {
             button.gameObject.SetActive(false);
         }
         
-        
+    }
+
+    public void GameStart()
+    {
+        startGamePanel.SetActive(false);
+        blockSpawner.SpawnBlock();
+
     }
 
     // Update is called once per frame
@@ -74,8 +84,10 @@ public class UIManager : MonoBehaviour
         BlockController.ResetGrid();
         BlockController.gameOver = false;
         gameOverSoundTrigger = false;
+        
         //restart scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 
     }
     public int GetScore()
@@ -108,19 +120,12 @@ public class UIManager : MonoBehaviour
         //I've probably gone ass ways about this, using essentially the same conditions as in roof dialogue manager
         //might be a better idea just to do it once in DisplayEndGameManager?!
         
-        if (score > 119)
+        foreach(Button button in gameOverButtons)
         {
-            foreach(Button button in gameOverButtons)
-            {
-                button.gameObject.SetActive(true);
-            }
+            button.gameObject.SetActive(true);
+        }
             
-        }
-        else
-        {
-            gameOverButtons[0].gameObject.SetActive(true);
-            gameOverButtons[1].gameObject.SetActive(true);
-        }
+
         
     }
     public void PlayGameOverSound()
