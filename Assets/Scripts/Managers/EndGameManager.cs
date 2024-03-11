@@ -20,12 +20,12 @@ namespace Assets.Scripts.Managers
         {
             _totalScore = GameManager_.Instance.CalculateTotalScore();
 
-            if (_totalScore >= 80)
+            if (_totalScore >= 70)
             {
                 _background.sprite = _greatScoreCityImage;
                 DialogueManager.Instance.SetDialogue(_greatScoreDialogue);
             }
-            else if (_totalScore >= 60 && _totalScore <= 79)
+            else if (_totalScore >= 40 && _totalScore <= 69)
             {
                 _background.sprite = _averageScoreCityImage;
                 DialogueManager.Instance.SetDialogue(_averageScoreDialogue);

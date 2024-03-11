@@ -87,15 +87,15 @@ public class FoundationLogic : MonoBehaviour
         }
         else if(questionNum <= 19)
         {
-            height = Random.Range(1,100);
+            height = Random.Range(1,20);
             width = Random.Range(1,10);
             heightText.text = height.ToString();
             widthText.text = width.ToString();
         }
         else if(questionNum <= 30)
         {
-            height = Random.Range(1,100);
-            width = Random.Range(1,100);
+            height = Random.Range(1,20);
+            width = Random.Range(1,20);
             heightText.text = height.ToString();
             widthText.text = width.ToString();
         }
