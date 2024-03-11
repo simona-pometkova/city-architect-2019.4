@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WallsScene.unity
     guid: fd9a43b82ba3c1745a86b02774185962
+  - enabled: 1
+    path: Assets/Scenes/SeeScoreScene.unity
+    guid: 9c80b5dc748c5a140b9c5e4b57c269c8
   m_configObjects: {}

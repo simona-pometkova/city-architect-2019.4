@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using Assets.Scripts;
 
 public class FoundationLogic : MonoBehaviour
 {
@@ -207,6 +208,8 @@ public class FoundationLogic : MonoBehaviour
         {
             endGameText.text = "You're a Genius! You scored: " + score.ToString();
         }
+
+        GameManager_.Instance.FoundationScore = score;
     }
 
     void FocusInputField()

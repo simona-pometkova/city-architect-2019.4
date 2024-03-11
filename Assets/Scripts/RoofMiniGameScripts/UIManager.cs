@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class UIManager : MonoBehaviour
 {
@@ -112,7 +113,7 @@ public class UIManager : MonoBehaviour
         int score = GetScore();
         gameOverText.text = dialogueManager.GetGameOverMessage(score);
         DisplayButtons(score);
-        
+        GameManager_.Instance.RoofScore = score;
     }
 
     public void DisplayButtons(int score)

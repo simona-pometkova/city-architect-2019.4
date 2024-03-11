@@ -139,6 +139,7 @@ MonoBehaviour:
   _cityScene: CityScene
   _nextScene: MainScreen
   _endGameScene: EndScene
+  _seeScoreScene: SeeScoreScene
 --- !u!1 &6180476709669834988
 GameObject:
   m_ObjectHideFlags: 0

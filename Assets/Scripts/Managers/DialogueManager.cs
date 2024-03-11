@@ -44,7 +44,7 @@ public class DialogueManager : Singleton<DialogueManager>
             {
                 if (SceneManager.GetActiveScene().name == "SeeScoreScene" && _index == 1)
                 {
-                    _dialogueText.text = $"You've got {GameManager_.Instance.TotalScore.ToString()} points! Let’s look at what you’ve built for our beautiful city.";
+                    _dialogueText.text = $"You've got {GameManager_.Instance.CalculateTotalScore().ToString()} points! Let’s look at what you’ve built for our beautiful city.";
                 }
                 else
                 {
@@ -64,10 +64,10 @@ public class DialogueManager : Singleton<DialogueManager>
                     {
                         if (_index == 1)
                         {
-                            Debug.Log("Setting text...");
-                            NextSentence($"You've got {GameManager_.Instance.TotalScore.ToString()} points! Let’s look at what you’ve built for our beautiful city.");
+                            NextSentence($"You've got {GameManager_.Instance.CalculateTotalScore().ToString()} points! Let’s look at what you’ve built for our beautiful city.");
                         }
-                    } else
+                    } 
+                    else
                     {
                         NextSentence();
                     }

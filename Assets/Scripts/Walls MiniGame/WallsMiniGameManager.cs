@@ -102,6 +102,8 @@ namespace Assets.Scripts.Walls_MiniGame
                 if (_level == 3)
                 {
                     yield return StartCoroutine(DisplayText("Good job! Brick by brick, you have built the wall.", 4f));
+                    _score += _pointsByLevel[_level];
+                    _scoreText.text = $"Score: {_score.ToString()}";
                     End();
                 } 
                 else
@@ -178,6 +180,7 @@ namespace Assets.Scripts.Walls_MiniGame
 
         private void End()
         {
+            GameManager_.Instance.WallsScore = _score;
             _button.gameObject.SetActive(true);
         }
 
