@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public RoofDialogueManager dialogueManager;
     public BlockSpawner blockSpawner;
 
+
+    private const string scoreKey = "RoofScore";
     private bool gameOverSoundTrigger = false;
     // Start is called before the first frame update
     void Start()
@@ -113,7 +115,7 @@ public class UIManager : MonoBehaviour
         int score = GetScore();
         gameOverText.text = dialogueManager.GetGameOverMessage(score);
         DisplayButtons(score);
-        GameManager_.Instance.RoofScore = score;
+        SetPlayerPrefScore((float)score);
     }
 
     public void DisplayButtons(int score)
@@ -125,10 +127,13 @@ public class UIManager : MonoBehaviour
         {
             button.gameObject.SetActive(true);
         }
-            
-
-        
+    }     
+    public void SetPlayerPrefScore(float score)
+    {
+        PlayerPrefs.SetFloat(scoreKey, score);
     }
+        
+    
     public void PlayGameOverSound()
     {
         if(gameOverSoundTrigger == false)

@@ -24,6 +24,8 @@ public class FoundationLogic : MonoBehaviour
     public AudioSource correctSound;
     public AudioSource incorrectSound;
 
+    private const string scoreKey = "FoundationScore";
+
 
 
     //Keep score
@@ -191,6 +193,7 @@ public class FoundationLogic : MonoBehaviour
     {
         endGamePanel.SetActive(true);
         timerActive = false;
+        
 
         if(score <= 10)
         {
@@ -209,7 +212,7 @@ public class FoundationLogic : MonoBehaviour
             endGameText.text = "You're a Genius! You scored: " + score.ToString();
         }
 
-        GameManager_.Instance.FoundationScore = score;
+        PlayerPrefs.SetFloat(scoreKey, score);
     }
 
     void FocusInputField()
@@ -220,6 +223,8 @@ public class FoundationLogic : MonoBehaviour
             answerInput.ActivateInputField();
         }
     }
+
+
     
     //used for the coroutine delay and sets panel back to false;
     IEnumerator CloseDelay(float delay)
