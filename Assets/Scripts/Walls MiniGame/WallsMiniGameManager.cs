@@ -31,6 +31,8 @@ namespace Assets.Scripts.Walls_MiniGame
         private int _attempt = 1;
         private int _score = 0;
 
+        private const string scoreKey = "WallsScore";
+
         private List<Brick> _correctSequence;
         private List<Brick> _playerSequence;
 
@@ -182,6 +184,8 @@ namespace Assets.Scripts.Walls_MiniGame
 
         private void End()
         {
+            float fscore = _score;
+            PlayerPrefs.SetFloat(scoreKey, fscore);
             GameManager_.Instance.WallsScore = _score;
             _button.gameObject.SetActive(true);
         }

@@ -13,9 +13,9 @@ namespace Assets.Scripts
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private DialogueManager _dialogueManager;
 
-        public float FoundationScore { get; set; }
-        public float WallsScore { get; set; }
-        public float RoofScore { get; set; }
+        public float FoundationScore;
+        public float WallsScore;
+        public float RoofScore;
 
         private void Awake()
         {
@@ -48,6 +48,9 @@ namespace Assets.Scripts
 
         public int CalculateTotalScore()
         {
+            RoofScore = PlayerPrefs.GetFloat("RoofScore");
+            FoundationScore = PlayerPrefs.GetFloat("FoundationScore");
+            WallsScore = PlayerPrefs.GetFloat("WallScore");
             float normalizedScoreFoundation = Mathf.Clamp01((float)FoundationScore / MAX_POINTS_FOUNDATION_GAME) * 33f;
             float normalizedScoreWalls = Mathf.Clamp01((float)WallsScore / MAX_POINTS_WALLS_GAME) * 33f;
             float normalizedScoreRoof = Mathf.Clamp01((float)RoofScore / MAX_POINTS_ROOF_GAME) * 33f;
