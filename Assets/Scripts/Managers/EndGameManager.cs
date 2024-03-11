@@ -22,19 +22,16 @@ namespace Assets.Scripts.Managers
 
             if (_totalScore >= 80)
             {
-                Debug.Log("Setting great score dialogue");
                 _background.sprite = _greatScoreCityImage;
                 DialogueManager.Instance.SetDialogue(_greatScoreDialogue);
             }
             else if (_totalScore >= 60 && _totalScore <= 79)
             {
-                Debug.Log("Setting average score dialogue");
                 _background.sprite = _averageScoreCityImage;
                 DialogueManager.Instance.SetDialogue(_averageScoreDialogue);
             }
             else
             {
-                Debug.Log("Setting low score dialogue");
                 _background.sprite = _lowScoreCityImage;
                 DialogueManager.Instance.SetDialogue(_lowScoreDialogue);
             }

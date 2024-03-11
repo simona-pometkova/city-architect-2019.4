@@ -17,19 +17,14 @@ namespace Assets.Scripts
         public float WallsScore { get; set; }
         public float RoofScore { get; set; }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Start()
         {
             DialogueManager.Instance.OnDialogueEnded += ProgressGame;
-
-            if (SceneManager.GetActiveScene().name == _levelManager.SeeScoreScene)
-            {
-                Debug.Log("Calculating total score...");
-                CalculateTotalScore();
-            }
-
-            Debug.Log($"Foundation score: {FoundationScore.ToString()}");
-            Debug.Log($"Walls score: {WallsScore.ToString()}");
-            Debug.Log($"Roof score: {RoofScore.ToString()}");
         }
 
         private void OnDestroy()
