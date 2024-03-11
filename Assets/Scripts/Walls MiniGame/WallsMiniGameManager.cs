@@ -18,6 +18,7 @@ namespace Assets.Scripts.Walls_MiniGame
         [SerializeField] private TextMeshProUGUI _progressText;
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private Button _button;
+        [SerializeField] private GameObject _startGamePanel;
 
         private List<Brick> _bricks;
         private List<Brick> _filledBricks;
@@ -35,8 +36,9 @@ namespace Assets.Scripts.Walls_MiniGame
 
         private Dictionary<int, int> _pointsByLevel;
 
-        private void Start()
+        public void StartGame()
         {
+            _startGamePanel.SetActive(false);
             _button.gameObject.SetActive(false);
             _bricks = GetComponentsInChildren<Brick>().ToList();
             _filledBricks = new List<Brick>();
